@@ -29,5 +29,8 @@ public interface ContactRepository extends JpaRepository<Contact,Long> {
     
     @Query("select c.name from Contact c inner join c.addressBook book where book.id IN ( :addressBookIdList) group by c.name having count(c.name) = 1 ")
     Collection<String> findUnCommonRecords(@Param("addressBookIdList") List<Long> addressBookIdList);
+    
+    @Query("select c.name from Contact c inner join c.addressBook book where book.name IN ( :addressBookIdList) group by c.name having count(c.name) = 1 ")
+    Collection<String> findUnCommonContacts(@Param("addressBookIdList") List<String> addressBookIdList);
 
 }

@@ -23,7 +23,7 @@ public class AddressBookController {
 	@Autowired
 	private AddressBookRepository addressBookRepository;
 	
-	@GetMapping("/addressBooks")
+/*	@GetMapping("/addressBooks")
     public List<AddressBook> getAllAddressBooks() {
         return addressBookRepository.findAll();
     }
@@ -49,5 +49,5 @@ public class AddressBookController {
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new RuntimeException("addressBookId " + addressBookId + " not found"));
     }
-
+*/
 }

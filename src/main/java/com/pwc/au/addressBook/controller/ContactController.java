@@ -29,7 +29,7 @@ public class ContactController {
     @Autowired
     private AddressBookRepository addressBookRepository;
 
-    @GetMapping("/addressBook/{addressBookId}/contacts")
+   /* @GetMapping("/addressBook/{addressBookId}/contacts")
     public List<Contact> getAllContactsByAddressBookId(@PathVariable (value = "addressBookId") Long addressBookId) {
         return (List<Contact>) contactRepository.findByAddressBookId(addressBookId);
     }
@@ -70,6 +70,6 @@ public class ContactController {
         	contactRepository.delete(contact);
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new RuntimeException("Contact not found with id " + contactId + " and addressBookId " + addressBookId));
-    }
+    }*/
 
 }

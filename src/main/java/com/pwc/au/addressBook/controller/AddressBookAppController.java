@@ -1,5 +1,6 @@
 package com.pwc.au.addressBook.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pwc.au.addressBook.model.AddressBook;
@@ -55,7 +57,7 @@ public class AddressBookAppController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/addressBook/{id}/contacts")
+	@RequestMapping("/addressBook/{id}/contact")
 	public ModelAndView showAddContactPage(@PathVariable(name = "id") Long addressBookId) {
 		ModelAndView mav = new ModelAndView("add_contact");	
 		Contact contact = new Contact();
@@ -83,6 +85,35 @@ public class AddressBookAppController {
 		ModelAndView mav = new ModelAndView("view_contacts");
 		List<Contact> contacts=(List<Contact>) contactRepository.findByAddressBookId(addressBookId);
 		mav.addObject("contacts", contacts);
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping("/viewCompare")
+	public ModelAndView showCompareAddressBook() {
+		ModelAndView mav = new ModelAndView("compare_books");	
+		String addrBookName1 = "";
+		String addrBookName2 = "";
+		mav.addObject("addrBookName1", addrBookName1);		
+		mav.addObject("addrBookName2", addrBookName2);		
+		mav.addObject("contactNames",new ArrayList<>());
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/compare", method = RequestMethod.POST)
+	public ModelAndView compareAddressBooks(@RequestParam(value = "addrBookName1", required = false) String addrBookName1,@RequestParam(value = "addrBookName2", required = false) String addrBookName2) {
+		List<String> addressBookNames = new ArrayList();
+		addressBookNames.add(addrBookName1);
+		addressBookNames.add(addrBookName2);
+		List<String> contactNames=(List<String>) contactRepository.findUnCommonContacts(addressBookNames);
+		
+		ModelAndView mav = new ModelAndView("compare_books");	
+	
+		mav.addObject("addrBookName1", addrBookName1);		
+		mav.addObject("addrBookName2", addrBookName2);
+		mav.addObject("contactNames",contactNames);
 		
 		return mav;
 	}

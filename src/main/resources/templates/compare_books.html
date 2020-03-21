@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Compare Address Books</title>
+</head>
+<body>
+	<div align="center">
+	     <a href="/">Go Back to Home Page</a><br>
+		<h1>Compare Address Books</h1>
+		<br />
+		<form action="#" th:action="@{/compare}" method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Address Book Name 1:</td>
+					<td><input type="text" th:name="addrBookName1" th:value="*{addrBookName1}" /></td>
+				</tr>
+				<tr>
+					<td>Address Book Name 2:</td>
+					<td><input type="text" th:name="addrBookName2" th:value="*{addrBookName2}" /></td>
+				</tr>				
+				<tr>
+					<td colspan="2"><button type="submit">Compare</button> </td>
+				</tr>				
+			</table>
+		</form>
+		<br>
+		<h1>Un common contact names</h1> <br><br>
+		<table border="1" cellpadding="10">
+			        <thead>
+			            <tr>
+			                <th>Name</th>			                         
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr th:each="name : ${contactNames}">
+			            	<td th:text="${name}">Contact Name</td>			                      
+			            </tr>
+		        </tbody>
+    </table>
+	</div>
+</body>
+</html>
