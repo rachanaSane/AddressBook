@@ -10,7 +10,7 @@ import com.pwc.au.book.model.AddressBook;
 
 
 
-@Repository
+//@Repository
 public interface AddressBookRepository extends JpaRepository<AddressBook,Long> {
 
 	Optional<AddressBook> findByName(String name);

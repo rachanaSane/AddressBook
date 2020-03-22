@@ -34,15 +34,12 @@ import com.pwc.au.book.repository.AddressBookRepository;
 import com.pwc.au.book.repository.ContactRepository;
 
 
-//@RunWith(SpringRunner.class)
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@WebMvcTest(controllers = AddressBookAppController.class)
-//@ContextConfiguration(classes = WebConfig.class)
 @ContextConfiguration(classes = {AddressBookAppController.class})
-//@AutoConfigureMockMvc
+
 public class AddressBookAppControllerTest {
 
 	//@Autowired

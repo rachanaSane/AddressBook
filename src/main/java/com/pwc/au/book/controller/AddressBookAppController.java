@@ -36,10 +36,9 @@ public class AddressBookAppController {
 		
 		return "index";
 	}
+			
 	
-		
 	
-	//@RequestMapping("/viewCompare")
 	@GetMapping("/viewCompare")
 	public ModelAndView showCompareAddressBook() {
 		ModelAndView compareBooks = new ModelAndView(COMPARE_BOOKS);			
@@ -49,7 +48,12 @@ public class AddressBookAppController {
 		return compareBooks;
 	}
 	
-	
+	/**
+	 * Compare method could be written to accept list of addressbooks if needed. I tried to do solution in 8 hours so, used addressbook names separately.
+	 * @param addrBookName1
+	 * @param addrBookName2
+	 * @return
+	 */
 	@RequestMapping(value = "/compare", method = RequestMethod.POST)
 	public ModelAndView compareAddressBooks(@RequestParam(value = "addrBookName1", required = false) String addrBookName1,@RequestParam(value = "addrBookName2", required = false) String addrBookName2) {
 		List<String> addressBookNames = new ArrayList<String>();
