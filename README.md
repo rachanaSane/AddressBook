@@ -39,3 +39,23 @@ There are several things which could have been improved. But I tried to complete
 ![](images/listContacts.jpg)
 
 ![](images/compareAddressBooks.jpg)
+
+
+**Challenge**
+
+You have been asked to develop an address book that allows a user to store (between
+
+successive runs of the program) the name and phone numbers of their friends, with the
+
+following functionality:
+
+- To be able to display the list of friends and their corresponding phone numbers sorted by their name.
+- Given another address book that may or may not contain the same friends, display the list of friends that are unique to each address book (the union of all the relative complements). For example given:
+
+Book1 = { &quot;Bob&quot;, &quot;Mary&quot;, &quot;Jane&quot; }
+
+Book2 = { &quot;Mary&quot;, &quot;John&quot;, &quot;Jane&quot; }
+
+The friends that are unique to each address book are:
+
+Book1 \ Book2 = { &quot;Bob&quot;, &quot;John&quot; }
