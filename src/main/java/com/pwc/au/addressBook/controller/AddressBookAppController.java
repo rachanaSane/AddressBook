@@ -42,52 +42,8 @@ public class AddressBookAppController {
 		return "index";
 	}
 	
-	@RequestMapping("/newAddressBook")
-	public String createNewAddressBook(Model model) {
-		AddressBook book = new AddressBook();
-		model.addAttribute("addressBook", book);
-		
-		return "new_addressBook";
-	}
 	
-	@RequestMapping(value = "/saveAddressBook", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("addressBook") AddressBook addressBook) {
-		addressBookRepository.save(addressBook);
-		
-		return "redirect:/";
-	}
-	
-	@RequestMapping("/addressBook/{id}/contact")
-	public ModelAndView showAddContactPage(@PathVariable(name = "id") Long addressBookId) {
-		ModelAndView mav = new ModelAndView("add_contact");	
-		Contact contact = new Contact();
-		mav.addObject("contact", contact);		
-		mav.addObject("addressBookId", addressBookId);		
-		return mav;
-	}
-	
-	
-	@RequestMapping("/addContact/{id}")
-	public String addContact(@PathVariable(name = "id") Long addressBookId, @ModelAttribute("contact") Contact updatedContact) {
-		
-		Contact contact =addressBookRepository.findById(addressBookId).map(addressBook -> {
-			updatedContact.setAddressBook(addressBook);
-            return contactRepository.save(updatedContact);
-        }).orElseThrow(() -> new RuntimeException("addressBookId " + addressBookId + " not found"));
-		
-		
-		return "redirect:/";
-	}
-	
-	
-	@RequestMapping("/addressBook/{id}/contacts")
-	public ModelAndView showViewContactPage(@PathVariable(name = "id") Long addressBookId) {
-		ModelAndView mav = new ModelAndView("view_contacts");
-		List<Contact> contacts=(List<Contact>) contactRepository.findByAddressBookId(addressBookId);
-		mav.addObject("contacts", contacts);
-		
-		return mav;
-	}
+
 	
 	
 	@RequestMapping("/viewCompare")

@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 
@@ -20,9 +23,14 @@ public class Contact {
 	 private Long id;
 	 
 	 @Column(name="name")
+	 @NotNull
+	 @NotBlank
 	 private String name;
 	 
 	 @Column(name="phoneNumber")
+	 @NotNull
+	 @NotBlank
+	 @Pattern(regexp = "(\\+61|0)[0-9]{9}")
 	 private String phoneNumber;
 	 
 	 @ManyToOne(fetch = FetchType.EAGER, optional = false)

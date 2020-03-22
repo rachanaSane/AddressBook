@@ -9,6 +9,7 @@
 	<div align="center">
 		<h1>Create New Contact</h1>
 		<br />
+		
 		<form action="#" th:action="@{/addContact/{path}(path=${addressBookId})}" th:object="${contact}"
 			method="post">
 
@@ -16,10 +17,12 @@
 				<tr>
 					<td>Contact Name:</td>
 					<td><input type="text" th:field="*{name}" /></td>
+					<td style="background-color:yellow" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Enter Value for Name</td>
 				</tr>
 				<tr>
 					<td>Phone Number:</td>
 					<td><input type="text" th:field="*{phoneNumber}" /></td>
+					<td style="background-color:yellow" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Enter Correct Value for Phone number</td>
 				</tr>
 				<tr>
 					<td colspan="2"><button type="submit">Save</button> </td>

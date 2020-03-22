@@ -5,16 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="addressBook")
+@Table(name="addressBook", uniqueConstraints=@UniqueConstraint(columnNames="name"))
 public class AddressBook {
 	
 	 @Id
 	 @GeneratedValue
 	 private Long id;
 	 
-	 @Column(name="name")
+	 @Column(name="name")	
+	 @NotNull
+	 @NotBlank
 	 private String name;
 
 	

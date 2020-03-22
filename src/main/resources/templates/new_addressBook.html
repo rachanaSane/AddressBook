@@ -16,6 +16,9 @@
 				<tr>
 					<td>Address Book Name:</td>
 					<td><input type="text" th:field="*{name}" /></td>
+					<td style="background-color:yellow" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Enter Value for Name</td>
+					<td><div style="background-color:yellow" th:if="${errorMessage != null}" th:text="${errorMessage}"></div></td>
+					
 				</tr>
 				<tr>
 					<td colspan="2"><button type="submit">Save</button> </td>
