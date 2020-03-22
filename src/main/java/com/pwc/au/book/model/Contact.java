@@ -1,4 +1,4 @@
-package com.pwc.au.addressBook.model;
+package com.pwc.au.book.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,9 +33,8 @@ public class Contact {
 	 @Pattern(regexp = "(\\+61|0)[0-9]{9}")
 	 private String phoneNumber;
 	 
-	 @ManyToOne(fetch = FetchType.EAGER, optional = false)
-	 @JoinColumn(name = "addressBook_id", nullable = false)
-	// @OnDelete(action = OnDeleteAction.CASCADE)	
+	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	 @JoinColumn(name = "addressBook_id", nullable = false)	
 	 private AddressBook addressBook;	
 	
 

@@ -1,4 +1,4 @@
-package com.pwc.au.addressBook.model;
+package com.pwc.au.book.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
